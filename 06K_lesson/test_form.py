@@ -8,9 +8,13 @@ def test_form():
     options = webdriver.EdgeOptions()
     driver = webdriver.Edge(options=options)
 
-    driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
+    driver.get
+    ("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
     waiter = WebDriverWait(driver, 20)
-    waiter.until(EC.presence_of_element_located((By.CSS_SELECTOR, "button.btn.btn-outline-primary.mt-3")))
+    waiter.until(EC.presence_of_element_located((By.CSS_SELECTOR, """
+                                                 "button.btn.
+                                                 btn-outline-primary.mt-3")))
+                                                 """)))
 
     first_name = driver.find_element(By.CSS_SELECTOR, "[name='first-name']")
     first_name.send_keys("Иван")
@@ -40,7 +44,8 @@ def test_form():
     country_name.send_keys("Россия")
     country_name.click()
 
-    job_position = driver.find_element(By.CSS_SELECTOR, "[name='job-position']")
+    job_position = driver.find_element(By.CSS_SELECTOR,
+                                       "[name='job-position']")
     job_position.send_keys("QA")
     job_position.click()
 
@@ -48,14 +53,20 @@ def test_form():
     company_name.send_keys("SkyPro")
     company_name.click()
 
-    submit_button = driver.find_element(By.CSS_SELECTOR, "button.btn.btn-outline-primary.mt-3")
+    submit_button = driver.find_element(By.CSS_SELECTOR,
+                                        "button.btn.btn-outline-primary.mt-3")
     submit_button.click()
-    zip_code = driver.find_element(By.CSS_SELECTOR, "[id='zip-code']").value_of_css_property("background-color")
+    zip_code = driver.find_element(By.CSS_SELECTOR,
+                                   "[id='zip-code']").value_of_css_property
+    ("background-color")
 
     assert zip_code == "rgba(248, 215, 218, 1)"
-    fields = ["first-name", "last-name", "address", "email", "phone", "city", "country", "job", "company"]
+    fields = ["first-name", "last-name", "address", "email", "phone", "city",
+              "country", "job", "company"]
 
     for field in fields:
-        field = driver.find_element(By.CSS_SELECTOR, "div#first-name.alert.py-2.alert-success").value_of_css_property("background-color")
+        field = driver.find_element(By.CSS_SELECTOR,
+                                    "div#first-name.alert.py-2.alert-success")
+        field.value_of_css_property("background-color")
     assert field == "rgba(209, 231, 221, 1)"
     driver.quit()
