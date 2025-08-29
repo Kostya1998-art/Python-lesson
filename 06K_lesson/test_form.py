@@ -7,18 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 def test_form():
     options = webdriver.EdgeOptions()
     driver = webdriver.Edge(options=options)
-<<<<<<< HEAD
     url = "https://bonigarcia.dev/selenium-webdriver-java/data-types.html"
     driver.get(url)
-=======
-
-    driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
-    waiter = WebDriverWait(driver, 20)
-    waiter.until(EC.presence_of_element_located((By.CSS_SELECTOR, """
-                                                 "button.btn.
-                                                 btn-outline-primary.mt-3")))
-                                                 """)))
->>>>>>> cc18909bb04c7bd896c86f857326ba7ec7d3e1f2
 
     first_name = driver.find_element(By.CSS_SELECTOR, "[name='first-name']")
     first_name.send_keys("Иван")
@@ -60,12 +50,6 @@ def test_form():
     submit_button = driver.find_element(By.CSS_SELECTOR,
                                         "button.btn.btn-outline-primary.mt-3")
     submit_button.click()
-<<<<<<< HEAD
-=======
-    zip_code = driver.find_element(By.CSS_SELECTOR,
-                                   "[id='zip-code']").value_of_css_property
-    ("background-color")
->>>>>>> cc18909bb04c7bd896c86f857326ba7ec7d3e1f2
 
     waiter = WebDriverWait(driver, 20)
     waiter.until(EC.presence_of_element_located((By.ID, "zip-code")))
@@ -83,15 +67,8 @@ def test_form():
               "#country", "#job-position", "#company"]
 
     for field in fields:
-<<<<<<< HEAD
         field = driver.find_element(By.CSS_SELECTOR, field)
         field.value_of_css_property("background-color")
         assert field.value_of_css_property
         ("background-color") == "rgba(209, 231, 221, 1)"
-=======
-        field = driver.find_element(By.CSS_SELECTOR,
-                                    "div#first-name.alert.py-2.alert-success")
-        field.value_of_css_property("background-color")
-    assert field == "rgba(209, 231, 221, 1)"
->>>>>>> cc18909bb04c7bd896c86f857326ba7ec7d3e1f2
     driver.quit()
