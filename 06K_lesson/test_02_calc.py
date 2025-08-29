@@ -7,9 +7,9 @@ from selenium.webdriver.support import expected_conditions as EC
 def test_calc():
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(options=options)
-
-    driver.get
-    ("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
+    url = "https://bonigarcia.dev/selenium-webdriver-java/" \
+        "slow-calculator.html"
+    driver.get(url)
     number = driver.find_element(By.CSS_SELECTOR, "#delay")
     number.clear()
     number.send_keys("45")

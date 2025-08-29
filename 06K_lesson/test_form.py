@@ -7,14 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 def test_form():
     options = webdriver.EdgeOptions()
     driver = webdriver.Edge(options=options)
-
-    driver.get
-    ("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
-    waiter = WebDriverWait(driver, 20)
-    waiter.until(EC.presence_of_element_located((By.CSS_SELECTOR, """
-                                                 "button.btn.
-                                                 btn-outline-primary.mt-3")))
-                                                 """)))
+    url = "https://bonigarcia.dev/selenium-webdriver-java/data-types.html"
+    driver.get(url)
 
     first_name = driver.find_element(By.CSS_SELECTOR, "[name='first-name']")
     first_name.send_keys("Иван")
@@ -56,17 +50,25 @@ def test_form():
     submit_button = driver.find_element(By.CSS_SELECTOR,
                                         "button.btn.btn-outline-primary.mt-3")
     submit_button.click()
-    zip_code = driver.find_element(By.CSS_SELECTOR,
-                                   "[id='zip-code']").value_of_css_property
-    ("background-color")
 
-    assert zip_code == "rgba(248, 215, 218, 1)"
-    fields = ["first-name", "last-name", "address", "email", "phone", "city",
-              "country", "job", "company"]
+    waiter = WebDriverWait(driver, 20)
+    waiter.until(EC.presence_of_element_located((By.ID, "zip-code")))
+
+    poles = ["#zip-code"]
+
+    for pole in poles:
+        pole = driver.find_element(By.CSS_SELECTOR, pole)
+        pole.value_of_css_property("background-color")
+        assert pole.value_of_css_property
+        ("background-color") == "rgba(248, 215, 218, 1)"
+
+    fields = ["#first-name", "#last-name", "#address", "#e-mail", "#phone",
+              "#city",
+              "#country", "#job-position", "#company"]
 
     for field in fields:
-        field = driver.find_element(By.CSS_SELECTOR,
-                                    "div#first-name.alert.py-2.alert-success")
+        field = driver.find_element(By.CSS_SELECTOR, field)
         field.value_of_css_property("background-color")
-    assert field == "rgba(209, 231, 221, 1)"
+        assert field.value_of_css_property
+        ("background-color") == "rgba(209, 231, 221, 1)"
     driver.quit()

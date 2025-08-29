@@ -20,31 +20,19 @@ def test_shop():
                                  "#login-button.submit-button.btn_action")
     button.click()
 
-    backpack = driver.find_element(By.CSS_SELECTOR, """
-                                   "#add-to-cart-sauce-labs-backpack.btn
-                                   .btn_primary.btn_small.btn_inventory")
-                                   """)
+    backpack = driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack")
     backpack.click()
 
-    t_shirt = driver.find_element(By.CSS_SELECTOR, """
-                                  "#add-to-cart-sauce-labs-bolt-t-shirt.btn
-                                  .btn_primary.btn_small.btn_inventory")
-                                """)
+    t_shirt = driver.find_element(By.ID, "add-to-cart-sauce-labs-bolt-t-shirt")
     t_shirt.click()
 
-    onesie = driver.find_element(By.CSS_SELECTOR, """
-                                                #add-to-cart-sauce-labs-onesie.btn
-                                                .btn_primary.btn_small.btn_inventory
-                                                """)
+    onesie = driver.find_element(By.ID, "add-to-cart-sauce-labs-onesie")
     onesie.click()
 
     cart = driver.find_element(By.CSS_SELECTOR, "a.shopping_cart_link")
     cart.click()
 
-    check = driver.find_element(By.CSS_SELECTOR, """
-                                "#checkout.btn
-                                .btn_action.btn_medium.checkout_button")
-                                """)
+    check = driver.find_element(By.ID, "checkout")
     check.click()
 
     name = driver.find_element(By.CSS_SELECTOR,
@@ -59,10 +47,7 @@ def test_shop():
                                  "#postal-code.input_error.form_input")
     postal.send_keys("195256")
 
-    next = driver.find_element(By.CSS_SELECTOR, """
-                               "#continue.submit-button.btn
-                               .btn_primary.cart_button.btn_action")
-                               """)
+    next = driver.find_element(By.ID, "continue")
     next.click()
 
     total = driver.find_element(By.CSS_SELECTOR, "div.summary_total_label")
