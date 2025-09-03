@@ -1,8 +1,8 @@
-from shop import Auth
+from Auth import Auth
 from selenium import webdriver
-from shop import MainPage
-from shop import Cart
-from shop import Order
+from MainPage import MainPage
+from Cart import Cart
+from Order import Order
 
 
 def test_login():
