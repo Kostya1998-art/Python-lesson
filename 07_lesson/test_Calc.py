@@ -1,5 +1,5 @@
 from selenium import webdriver
-from Calculator import Calculator
+from Calc import Calculator
 
 
 def test_calc():
